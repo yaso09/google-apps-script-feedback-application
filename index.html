@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+  </head>
+  <body>
+    <h1>Geri Bildirim</h1>
+    <small>Geri bildiriminiz bizim için değerlidir...</small><br>
+    <input id="name" type="text" placeholder="İsminiz"><br>
+    <input id="email" type="email" placeholder="E-Posta adresiniz"><br>
+    <input id="sub" type="text" placeholder="Konu"><br>
+    <textarea id="body" placeholder="Metniniz"></textarea><br>
+    <input id="btn" type="button" value="Gönder">
+    <script>
+      document.querySelector("#btn").onclick = function () {
+        google.script.run.doMail(
+          document.querySelector("#name").value,
+          document.querySelector("#email").value,
+          document.querySelector("#sub").value,
+          document.querySelector("#body").value
+        );
+        google.script.run.doSheets(
+          document.querySelector("#name").value,
+          document.querySelector("#email").value,
+          document.querySelector("#sub").value,
+          document.querySelector("#body").value
+        );
+      }
+    </script>
+  </body>
+</html>
